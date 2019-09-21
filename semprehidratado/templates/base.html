@@ -29,7 +29,7 @@
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-sm bg-success text-white navbar-dark d-flex flex-row justify-content-between">
         <!-- Brand -->
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand"  href="{% url 'dashboard' %}">
             <h3><strong>SH</strong></h3>
         </a>
 
@@ -64,7 +64,7 @@
         <ul class="navbar-nav">
             <li>
 
-                <a class="btn btn-primary btn-lg" href="{% url 'login' %}">Log In</a>
+                <a class="btn btn-danger btn-lg" href="{% url 'login' %}">Log In</a>
             </li>
         </ul>
         {% endif%}
