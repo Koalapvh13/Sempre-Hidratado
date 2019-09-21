@@ -19,7 +19,7 @@ from users import urls
 from pedidos import urls
 
 urlpatterns = [
-    path('admin/',  admin.site.urls),
+    path('admin/', admin.site.urls),
     path('accounts/', include('users.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('', include('pedidos.urls'))
