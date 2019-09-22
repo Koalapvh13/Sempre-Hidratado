@@ -14,6 +14,9 @@
         body {
             padding: 0;
             margin: 0;
+            min-height: 100vh;
+            position: relative;
+            margin: 0;
         }
 
         .nav-link {
@@ -47,6 +50,17 @@
             -o-transform: rotate(-44deg);
             -ms-transform: rotate(-44deg);
             transform: rotate(-44deg);
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            margin-top: 170px;
+
+        }
+        table{
+            padding-bottom: 50px;
         }
     </style>
 </head>
@@ -98,12 +112,12 @@
     </nav>
 
     <!-- Conteúdo da Página -->
-    <div class="container">
+    <div class="container mb-0">
         {%block content %}{% endblock %}
     </div>
 
     <!-- FOOTER -->
-    <footer class="page-footer font-small bg-success text-white fixed-bottom">
+    <footer class="page-footer font-small bg-success text-white ">
 
         <!-- Copyright -->
         <div class="footer-copyright text-center py-3">© 2019 Copyright:
@@ -114,8 +128,6 @@
 
     </footer>
     <!-- FOOTER -->
-
-
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
