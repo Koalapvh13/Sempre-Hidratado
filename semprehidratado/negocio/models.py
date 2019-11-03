@@ -23,5 +23,5 @@ class Dispositivo (models.Model):
 class Pedido (models.Model):
     dispositivo = models.ForeignKey(Dispositivo, on_delete=models.CASCADE)
     estado = models.BooleanField(verbose_name='Estado', default=False)
-    data_pedido = models.DateField(verbose_name='Data Solicitação', auto_now=True)
-    data_entrega = models.DateField(verbose_name='Data Entrega', auto_now=True)
+    data_pedido = models.DateTimeField(verbose_name='Data Solicitação', auto_now=True)
+    data_entrega = models.DateTimeField(verbose_name='Data Entrega')
