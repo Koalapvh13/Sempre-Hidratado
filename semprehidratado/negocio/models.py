@@ -22,6 +22,9 @@ class Dispositivo (models.Model):
 
 class Pedido (models.Model):
     dispositivo = models.ForeignKey(Dispositivo, on_delete=models.CASCADE)
-    estado = models.BooleanField(verbose_name='Estado', default=False)
+    estado = models.BooleanField(verbose_name='Entregue?', default=True)
     data_pedido = models.DateTimeField(verbose_name='Data Solicitação', auto_now=True)
-    data_entrega = models.DateTimeField(verbose_name='Data Entrega')
+    data_entrega = models.DateTimeField(verbose_name='Data Entrega', null=True, blank=True)
+    def __str__(self):
+        situacao = "[OK] " if self.estado else "[OPEN] "
+        return situacao + self.dispositivo.empresa.nome + "_" + self.dispositivo.apelido + "_" + str(self.data_pedido)
