@@ -1,0 +1,55 @@
+{% extends 'negocio/base.html' %}
+{% block title %} Pedidos{% endblock %}
+
+{% block content %}
+
+<h2 class="display-4">PEDIDOS SEMPRE HIDRATADO</h2>
+<hr>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>#</th>
+            <th>Empresas</th>
+            <th>Dispositivo</th>
+            <th>Data da Solicitação</th>
+        </tr>
+    </thead>
+    <tbody class="linhas">
+
+    </tbody>
+</table>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    // Função responsável por atualizar as frases
+    function atualizar() {
+        // Fazendo requisição AJAX
+        $.get("/list/pedido/", function (frase) {
+            let linhas = "";
+            console.log(frase)
+            if (frase.status === 200) {
+                for (pedido in frase.pedidos) {
+                    let pedidos = frase.pedidos
+                    linhas += "<tr><td>" + pedidos[pedido].id_pedido + "</td><td>" + pedidos[pedido].empresa + "</td><td>" + pedidos[pedido].dispositivo + "</td><td>" + pedidos[pedido].data_pedido + "</td><tr>";
+                }
+                // Exibindo frase
+                $('.linhas').html(linhas);
+            } else {
+                $('.linhas > tr').remove();
+            }
+
+        }, 'JSON');
+    }
+
+
+    // Definindo intervalo que a função será chamada
+    setInterval("atualizar()", 10000);
+
+    // Quando carregar a página
+    $(function () {
+        // Faz a primeira atualização
+        atualizar();
+    });
+</script>
+
+{% endblock %}

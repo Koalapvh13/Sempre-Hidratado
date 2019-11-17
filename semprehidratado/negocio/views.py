@@ -4,6 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse, JsonResponse
 from negocio.form import *
 from django.utils import timezone
+from django.utils.dateformat import format
 
 
 @csrf_exempt
@@ -73,17 +74,21 @@ def lista_pedidos(request):
                 'id_pedido': p.pk,
                 'empresa': p.dispositivo.empresa.nome,
                 'dispositivo': p.dispositivo.apelido,
-                'data_pedido': p.data_pedido
+                'data_pedido': p.data_pedido.strftime('%d/%m/%Y %H:%M')
             })
         json_resp['pedidos'] = lista
+        json_resp['status'] = 200
+
     else:
         json_resp['erro_msg'] = "Não Há Pedidos!"
-        std = 404
+        json_resp['status'] = 404
+        std = 200
     return JsonResponse(json_resp, status=std)
 
 
-'''
-- Adicionar view de finalização de pedido
-- Adicionar view de listagem de pedidos
-- Criar Código de consumo No Arduino
-'''
+def painel_pedidos(request):
+    pedidos = Pedido.objects.filter(estado=False).order_by('-data_pedido')
+    return render(request, "negocio/painel.html", {"pedidos":pedidos})
+
+def index_screen(request):
+    return render(request, "negocio/index.html")
