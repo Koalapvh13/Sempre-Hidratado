@@ -2,7 +2,7 @@ astroid==2.2.5
 autopep8==1.4.4
 certifi==2019.9.11
 chardet==3.0.4
-cmake
+cmake==3.14.4
 colorama==0.4.1
 cycler==0.10.0
 dj-database-url==0.5.0
