@@ -9,7 +9,7 @@ image==1.5.27
 isort==4.3.21
 kiwisolver==1.1.0
 lazy-object-proxy==1.4.1
-lxml==4.4.0
+lxml==4.6.5
 python-dateutil==2.8.0
 requests==2.22.0
 six==1.12.0
